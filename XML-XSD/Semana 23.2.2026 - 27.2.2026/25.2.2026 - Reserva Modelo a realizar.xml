@@ -1,0 +1,68 @@
+<reservas>
+    <restaurante>
+        <nombre>Bohío</nombre>
+        <direccion>
+            <calle>Calle Los Nevados</calle>
+            <ciudad>Las Palmas de Gran Canaria</ciudad>
+            <cp>38492</cp>
+            <pais>España</pais>
+        </direccion>
+        <telefono>+34689384719</telefono> 
+    </restaurante>
+    <reserva id="R-93847659-926483" estado="confirmada">
+        <cliente>
+            <nombre>Alfonso Fernandez Guzmán</nombre>
+            <telefono>+346892384359</telefono>
+            <email>alfonsoFerGuz@gmail.com</email>
+            <tags>
+                <tag nombre="diabetico"/>
+                <tag nombre="marisco"/>
+                <tag nombre="celiaco"/>
+            </tags>
+        </cliente>
+        <servicio zona="interior">
+            <fecha>2026-02-27</fecha>
+            <hora>18:30:00</hora>
+            <personas>3</personas>
+        </servicio>
+        <mesa>
+            <numero>2</numero>
+            <capacidad>4</capacidad>
+        </mesa>
+        <pago>
+            <importe moneda="EUR">1728.23</importe>
+            <metodo>Tarjeta</metodo>
+        </pago>
+        <notas>
+            <nota tipo="tipodeNota1" fecha="2026-04-27T21:29:39">Nota 1</nota>
+            <nota tipo="tipodeNota2" fecha="2026-04-27T21:29:39">Nota 2</nota>
+        </notas>
+    </reserva>
+    <reserva id="R-93892749-923456" estado="pendiente">
+        <cliente>
+            <nombre>Pedro Donate Mendez</nombre>
+            <telefono>+34682916459</telefono>
+            <tags>
+                <tag nombre="celiaco"/>
+            </tags>
+        </cliente>
+        <servicio zona="terraza">
+            <fecha>2026-02-14</fecha>
+            <hora>12:15:00</hora>
+            <personas>8</personas>
+        </servicio>
+        <mesa>
+            <numero>8</numero>
+            <capacidad>9</capacidad>
+        </mesa>
+        <pago>
+            <importe moneda="EUR">123.34</importe>
+            <metodo>Efectivo</metodo>
+        </pago>
+        <notas>
+            <nota tipo="tipodeNota1" fecha="2026-04-27T21:29:39">Nota 1</nota>
+            <nota tipo="tipodeNota2" fecha="2026-04-27T21:29:39">Nota 2</nota>
+            <nota tipo="tipodeNota3" fecha="2026-04-27T21:29:39">Nota 3</nota>
+        </notas>
+    </reserva>
+</reservas>

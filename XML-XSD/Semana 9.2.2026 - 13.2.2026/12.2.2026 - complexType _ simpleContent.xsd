@@ -1,0 +1,27 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <!--Tipo Simple-->
+    <!--Tipo Complejo-->         
+    <!--? "simpleType" con atributos-->
+    <xsd:complexType name="tipoNose">
+        <xsd:simpleContent>
+            <xsd:extension base="xsd:decimal">
+                <xsd:attribute name="moneda" type="xsd:string" use="required"/> <!--* Tambien puede ser "tipoModena" si usamos un ENUM -->
+            </xsd:extension>
+        </xsd:simpleContent>
+    </xsd:complexType>          
+    <!--? "complexType" con hijos y atributos --> 
+    <xsd:complexType name="tipoTelefono">
+        <xsd:sequence>
+            <xsd:element name="empresa" type="xsd:integer"/>
+            <xsd:element name="particular" type="xsd:integer"/>
+        </xsd:sequence>
+        <xsd:attribute name="country" type="xsd:tipoCountry" use="required"/>
+    </xsd:complexType>  
+    <xsd:complexType name="tipo12-2-2026">
+        <xsd:sequence>
+            <xsd:element name="prueba3" type="xsd:string"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <!--Elemento Raiz-->
+    <xsd:element name="prueba3" type="tipo12-2-2026"/>
+</xsd:schema>

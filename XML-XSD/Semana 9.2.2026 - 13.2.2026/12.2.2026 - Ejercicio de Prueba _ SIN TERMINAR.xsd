@@ -1,0 +1,148 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+    <!--! Elementos Simples -->
+
+    <!--? Nombre Fiscal -> Sociedad -->
+    <!--* TERMINADO -->
+    <xsd:simpleType name="tipoSociedad">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="sociedad limitada"/>
+            <xsd:enumeration value="sociedad anónima"/>
+            <xsd:enumeration value="sociedad anonima"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <!--? Identificador -> Documento -->
+    <!--* TERMINADO -->
+    <xsd:simpleType name="tipoDocumento">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="cif"/>
+            <xsd:enumeration value="nif"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <!--? Direccion -> Via -->
+    <!--* TERMINADO -->
+    <xsd:simpleType name="tipoVia">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="paseo"/>
+            <xsd:enumeration value="via"/>
+            <xsd:enumeration value="calle"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <!--? Email -> Que Email -->
+    <!--* TERMINADO -->
+    <xsd:simpleType name="tipoQueEmail">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="particular"/>
+            <xsd:enumeration value="empresarial"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <!--? Dinero -> Moneda -->
+    <xsd:simpleType name="tipoDeMoneda">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="EUR"/>
+            <xsd:enumeration value="USD"/>
+            <xsd:enumeration value="IKR"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+    
+    <!--! Elementos Complejos -->
+
+    <!--? Direccion -> Municipio -->
+    <!--* TERMINADO -->
+     <xsd:complexType name="tipoMunicipio">
+        <xsd:attribute name="CP" type="xsd:integer"/>
+     </xsd:complexType>
+
+    <!--? Direccion -->
+    <!--* TERMINADO -->
+    <xsd:complexType name="tipoDireccion">
+        <xsd:sequence>
+            <xsd:element name="via" type="tipoVia"/>
+            <xsd:element name="nombreVia" type="xsd:string"/>
+            <xsd:element name="numero" type="xsd:integer"/>
+            <xsd:element name="municio" type="tipoMunicipio"/>
+            <xsd:element name="provincia" type="xsd:string"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <!--? Contacto -> Email -->
+    <!--* TERMINADO -->
+    <xsd:complexType name="tipoEmail">
+        <xsd:simpleContent>
+            <xsd:extension base="xsd:string">
+                <xsd:attribute name="uso" type="tipoQueEmail"/>
+            </xsd:extension>
+        </xsd:simpleContent>
+    </xsd:complexType>
+
+    <!--? Datos -> Contacto -->
+    <!--* TERMINADO -->
+    <xsd:complexType name="tipoContacto">
+        <xsd:sequence>
+            <xsd:element name="email" type="tipoEmail"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <!--? Datos -> Identificador -->  
+    <!--* TERMINADO -->
+    <xsd:complexType name="tipoIdentificacion">
+        <xsd:attribute name="documento" type="tipoDocumento" use="required"/>
+        <xsd:attribute name="id" type="xsd:string" use="required"/>
+    </xsd:complexType>
+
+    <!--? Datos -> Nombre Fiscal -->
+    <!--* TERMINADO-->
+    <xsd:complexType name="tipoNombreFiscal">
+        <xsd:simpleContent>
+            <xsd:extension base="xsd:string">
+                <xsd:attribute name="tipo" type="tipoSociedad"/>
+            </xsd:extension>
+        </xsd:simpleContent>
+    </xsd:complexType>
+
+    <!--? Datos Contable -> Dinero -->
+    <xsd:complexType name="tipoDinero">
+        <xsd:simpleContent>
+            <xsd:extension base="xsd:string">
+                <xsd:attribute name="moneda" type="tipoDeMoneda"/>
+            </xsd:extension>
+        </xsd:simpleContent>
+    </xsd:complexType>
+
+    <!--? Datos -> Datos Contables -->
+    <xsd:complexType name="tipoDatosContables">
+        <xsd:sequence>
+            <xsd:element name="trimestre1T" type="tipoDinero"/>
+            <xsd:element name="trimestre1T" type="tipoDinero"/>
+            <xsd:element name="trimestre1T" type="tipoDinero"/>
+            <xsd:element name="trimestre1T" type="tipoDinero"/>
+            <xsd:element name="total" type="tipoDinero"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <!--? Cuerpo -> Datos "Proveedor 1 || Proveedor 2 || Cliente" -->
+    <xsd:complexType name="tipoDatos">
+        <xsd:sequence>
+            <xsd:element name="nombreFiscal" type="tipoNombreFiscal"/>
+            <xsd:element name="direccion" type="tipoDireccion"/>
+            <xsd:element name="contacto" type="tipoContacto"/>
+            <xsd:element name="datosContables" type="tipoDatosContables"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <!--? Cuerpo -->
+    <!--* TERMINADO -->
+    <xsd:complexType name="tipoModelo347">
+        <xsd:sequence>
+            <xsd:element name="proveedor2" type="tipoDatos" minOccurs="0" maxOccurs="unbounded"/>
+            <xsd:element name="proveedor" type="tipoDatos" minOccurs="0" maxOccurs="unbounded"/>
+            <xsd:element name="cliente" type="tipoDatos" minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <!-- Elemento Raiz-->
+    <xsd:element name="modelo347" type="tipoModelo347"/>
+</xsd:schema>

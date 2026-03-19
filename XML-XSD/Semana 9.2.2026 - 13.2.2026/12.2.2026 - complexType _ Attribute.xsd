@@ -1,0 +1,16 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <!--Tipo Simple-->
+    <!--Tipo Complejo-->
+    <xsd:complexType name="tipoNose">
+        <!--? A diferencia de los elements con "minOccur" y "maxOccur"con valor por defecto 1, los atributos tienen 0 -->
+        <xsd:attribute name="modena" type="xsd:string" use="required"/> <!--* Tambien puede ser "tipoModena" si usamos un ENUM -->
+                                              <!--? /\ use="required" /\ sirve para hacer que el atributo sea obligatorio -->
+    </xsd:complexType>
+    <xsd:complexType name="tipo12-2-2026">
+        <xsd:sequence>
+            <xsd:element name="prueba2" type="xsd:string"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <!--Elemento Raiz-->
+    <xsd:element name="prueba" type="tipo12-2-2026"/>
+</xsd:schema>

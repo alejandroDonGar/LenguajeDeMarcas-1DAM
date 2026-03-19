@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="reservas">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="restaurante">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="nombre" type="xs:string" />
+                            <xs:element name="direccion">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="calle" type="xs:string" />
+                                        <xs:element name="ciudad" type="xs:string" />
+                                        <xs:element name="cp" type="xs:string" />
+                                        <xs:element name="pais" type="xs:string" />
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="telefono" type="xs:string" />
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="reserva">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="cliente">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="nombre" type="xs:string" />
+                                        <xs:element name="telefono" type="xs:string" />
+                                        <xs:element name="email" type="xs:string" />
+                                        <xs:element name="tags">
+                                            <xs:complexType>
+                                                <xs:sequence>
+                                                    <xs:element name="tag" maxOccurs="unbounded">
+                                                        <xs:complexType>
+                                                            <xs:attribute name="nombre"
+                                                                use="required" />
+                                                        </xs:complexType>
+                                                    </xs:element>
+                                                </xs:sequence>
+                                            </xs:complexType>
+                                        </xs:element>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="servicio">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="fecha" type="xs:string" />
+                                        <xs:element name="hora" type="xs:string" />
+                                        <xs:element name="personas" type="xs:string" />
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="mesa">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="numero" type="xs:string" />
+                                        <xs:element name="capacidad" type="xs:string" />
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="pago">
+                                <xs:complexType>
+                                    <xs:simpleContent>
+                                        <xs:extension base="xs:string">
+                                            <xs:attribute name="importe" use="required" />
+                                            <xs:attribute name="metodo" use="required" />
+                                        </xs:extension>
+                                    </xs:simpleContent>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="notas">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="nota" maxOccurs="unbounded">
+                                            <xs:complexType>
+                                                <xs:attribute name="tipo" use="required" />
+                                                <xs:attribute name="fecha" use="required" />
+                                            </xs:complexType>
+                                        </xs:element>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                        <xs:attribute name="id" use="required" />
+                        <xs:attribute name="estado" use="required" />
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

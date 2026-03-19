@@ -1,0 +1,22 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <!--Tipo Simple-->
+    <xsd:simpleType name="pruebaSimple">
+        <xsd:restriction base="xsd:integer">
+            <xsd:minInclusive value="0"/> <!--* Igual o "mayor" a - 0-->
+            <xsd:maxInclusive value="1024"/> <!--* Igual o "menor" a - 1024-->
+        </xsd:restriction>
+    </xsd:simpleType>
+    <xsd:simpleType name="pruebaSimple2">
+        <xsd:restriction base="xsd:integer">
+            <xsd:totalDigits value="10"/> <!--* Te limita el numero de digitos-->
+        </xsd:restriction>
+    </xsd:simpleType>
+    <!--Tipo Complejo-->
+    <xsd:complexType name="tipo12-2-2026">
+        <xsd:sequence>
+            <xsd:element name="prueba2" type="xsd:string"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <!--Elemento Raiz-->
+    <xsd:element name="prueba" type="tipo12-2-2026"/>
+</xsd:schema>

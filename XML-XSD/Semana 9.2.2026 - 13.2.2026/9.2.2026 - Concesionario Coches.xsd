@@ -1,0 +1,18 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <!--Tipo simple-->
+    <xsd:simpleType name="tipoCoche">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="Cupra"/>
+            <xsd:enumeration value="Ford"/>
+            <xsd:enumeration value="Skoda"/>
+            <xsd:enumeration value="Seat"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+    <!--Tipo complejo-->
+    <xsd:complexType name="tipoConcesionario">
+        <xsd:sequence>
+            <xsd:element name="marcaCoche" type="tipoCoche" maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="concesionario" type="tipoConcesionario"/>
+</xsd:schema>
