@@ -1,0 +1,30 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>24-11-2025 | M.C.D</title>
+    </head>
+    <body>
+        <div>
+            <label class="miClase" for="primero"> Primer numero:</label>
+            <input id="primero" type="number">
+        </div>
+        <div class="miClase">
+            <label for="segundo"> Segundo numero:</label>
+            <input id="segundo" type="number">
+        </div>
+        <h1 class="miClase" id="resultado"></h1>
+        <button onclick="mcd()">M.C.D</button>
+        <script>
+            function mcd() {
+                let elementos=document.getElementByClassName("miClase");
+                elementos[0].innerText="Esto está complicado";
+                let elh1=elementos[elementos.length-1];
+                elh1.innerText="ya te digo";
+                elh1.style.color="green";
+                let eldiv=document.querySelector("body>div:nth-of-type(1)");
+                eldiv.style.backgroundColor="lightyellow";
+                return;
+            }
+        </script>
+    </body>
+</html>

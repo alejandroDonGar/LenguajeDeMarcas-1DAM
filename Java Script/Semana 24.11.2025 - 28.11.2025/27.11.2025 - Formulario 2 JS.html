@@ -1,0 +1,55 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>27.11.2025-2º-JS</title>
+        <style>
+            div {
+                background-color:lightyellow;
+            }
+        </style>
+    </head>
+    <body>
+        <input type="password" id="usuario">
+        <br>
+        <button onclick="passwd()">Ver Password</button>
+        <br>
+        <div>
+            <p>Párrafo 1</p>
+            <p>Párrafo 2</p>
+            <p id="elegido">Párrafo 3</p>
+            <p>Párrafo 4</p>
+        </div>
+        <script>
+            let contador=0;
+
+            function passwd() {
+                const colores=["yellow", "red", "green", "navy"];
+                const elemento=document.getElementById("usuario");
+                const listaBotones=document.getElementsByTagName("button");
+                listaBotones[0].style.color="white";
+
+                switch (elemento.type) {
+                    case "text":
+                        elemento.type="password";
+                        listaBotones[0].style.backgroudColor="green";
+                        break;
+                    case "password";
+                        elemento.type="text";
+                        listaBotones[0].style.backgroundColor="red";
+                        break;
+                }
+                
+                let nuevo = document.createElement("h3");
+                nuevo.innerText="Hola, soy el nuevo";
+                let elegido = document.getElementById("elegido");
+                elegido.insertAdjacentElement("beforebegin", nuevo);
+
+                nuevo.style.color=colores[contador];
+                ++contador;
+                if (contador >= 4) {
+                    contador = 0;
+                }
+            }
+        </script>
+    </body>
+</html>

@@ -1,0 +1,34 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>JS</title>
+        <style>
+            div {
+                text-align:center;
+                font-weight:bold;
+            }
+        </style>
+    </head>
+    <body>
+        <div>
+            <lable for="fecha">Fecha: </lable>
+            <input type="date" id="fecha1">
+            <br>
+            <br>
+            <button onclick="enviar()">Enviar el dia de la semana</button>
+            <br>
+            <br>
+            <h3 id="h3"></h3>
+        </div>
+        <script>
+            
+            function enviar() {
+                const dias=["domingo","lunes","martes","miercoles","jueves","viernes","sabado","domingo"];
+                const meses=["enero","febrero","marzo","abril","mayo","junio","julio","agosto","septiembre","octubre","noviembre","diciembre"];
+                const fecha = new Date(document.getElementById("fecha1").value);
+                const salida="El dia " +fecha.getDate()+" de "+meses[fecha.getMonth()]+ " es "+dias[fecha.getDay()];
+                document.getElementById("h3").innerText=salida; 
+            }
+        </script>
+    </body>
+</html>

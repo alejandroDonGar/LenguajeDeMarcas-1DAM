@@ -1,0 +1,80 @@
+<html>
+    <head>
+        <title>18.12.2025</title>
+        <meta charset="utf-8">
+        <style>
+            body {
+                display:flex;
+                height:90vh;
+                flex-direction:column;
+                justify-content:center;
+                background-image:linear-gradient(to bottom, lightcyan, white);
+                align-items:center;
+                
+            }
+            #contenedor {
+                display:grid;
+                border:5px solid black;
+                background-image:linear-gradient(to bottom, white, lightcyan);
+                grid-template-columns:1fr 1fr 1fr;
+            }
+            #dos, #siete{
+                grid-column-start:3;
+            }
+            div {
+                margin:20px;
+            }
+            button {
+                padding:20px;
+                border:5px solid black;
+                background-image:linear-gradient(to bottom, lightcyan, white);
+                color:black;
+                font-size:2em;
+                font-weight:bold;
+            }
+            img {
+                visibility:hidden;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="contenedor">
+            <img id="uno" src="http://lnd.angelmelchor.pro/circle.svg">
+            <img id="dos" src="http://lnd.angelmelchor.pro/circle.svg">
+            <img id="tres" src="http://lnd.angelmelchor.pro/circle.svg">
+            <img id="cuatro" src="http://lnd.angelmelchor.pro/circle.svg">
+            <img id="cinco" src="http://lnd.angelmelchor.pro/circle.svg">
+            <img id="seis" src="http://lnd.angelmelchor.pro/circle.svg">
+            <img id="siete" src="http://lnd.angelmelchor.pro/circle.svg">
+        </div>
+        <div>
+            <button onclick="boton()">Roll the Dice</button>
+        </div>
+        <script>
+
+            // Lista con todas las imagenes
+            const puntos = document.getElementsByTagName("img");
+
+            // Lista de cada uno de los parametros de visibility para cada numero.
+            const uno = ["hidden", "hidden", "hidden", "visible", "hidden", "hidden", "hidden"];
+            const dos = ["visible", "hidden", "hidden", "hidden", "hidden", "hidden", "visible"];
+            const tres = ["visible", "hidden", "hidden", "visible", "hidden", "hidden", "visible"];
+            const cuatro = ["visible", "visible", "hidden", "hidden", "hidden", "visible", "visible"];
+            const cinco = ["visible", "visible", "hidden", "visible", "hidden", "visible", "visible"];
+            const seis = ["visible", "visible", "visible", "hidden", "visible", "visible", "visible"];
+
+            // Lista compuesta por todas las listas de los numeros.
+            const caraDelDado = [uno, dos, tres, cuatro, cinco, seis, siete]; 
+
+            function boton() {
+
+                // Formula para calcular un numero random entre 0 y 1 multiplicado por 6. Si sale 0 automaticamente se le suma 1.
+                const numeroDelDado = Math.ceil(Math.random()*6);
+                
+                for (let i = 0; i < 7; i++) {
+                    puntos[i].style.visibility = caraDelDado[numeroDelDado-1][i];
+                }
+            }
+        </script>
+    </body>
+</html>

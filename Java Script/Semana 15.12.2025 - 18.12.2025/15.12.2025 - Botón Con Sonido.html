@@ -1,0 +1,68 @@
+<html>
+    <head>
+        <title>15.12.2025</title>
+        <meta charset="utf-8">
+        <style>
+            body {
+                display:flex;
+                justify-content:center;
+                align-items:center;
+                height:90vh;
+            }
+            div {
+                border:3px solid black;
+                height:80%;
+                width:50%;
+                display:flex;
+                flex-direction:column;
+                justify-content:space-around;
+                align-items:center;
+                background-image:linear-gradient(to bottom, yellow, cyan, yellow);
+            }
+            p {
+                display:flex;
+                margin:0;
+                border:3px solid black;
+                width:80%;
+                height:20%;
+                justify-content:center;
+                align-items:center;
+                font-weight:bold;
+                font-size:3em;
+                background-image:linear-gradient(to bottom, red, orange);
+            }
+            button {
+                width:200px;
+                padding:2px;
+                font-size:1.5em;
+                font-weight:bold;
+                border:3px solid black;
+                background-image:linear-gradient(to bottom, orange, red);
+            }
+
+        </style>
+    </head>
+    <body>
+        <div>
+            <button onclick="getNumber()">GOOD LUCK</button>
+            <p id="resultado"></p>
+        </div>
+        <script>
+            const resultado = document.getElementById("resultado");
+            function getNumber() {
+                const numero = Math.ceil(Math.random()*100000);
+                resultado.innerText=numero;
+
+                var context = new AudioContext();
+                var oscillator = context.createOscillator();
+                oscillator.type = "sine";
+                oscillator.frequency.value = 1000;
+                oscillator.connect(context.destination);
+                oscillator.start();
+                setTimeout(function () { 
+                    oscillator.stop(); 
+                    }, 700);
+            }
+        </script>
+    </body>
+</html>

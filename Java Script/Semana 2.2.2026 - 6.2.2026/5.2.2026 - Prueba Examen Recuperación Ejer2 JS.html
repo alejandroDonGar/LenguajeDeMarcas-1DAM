@@ -1,0 +1,86 @@
+<head>
+
+        <title>Roll the Dice</title>
+
+        <meta charset="utf-8">
+
+        <style>
+
+            #externo {
+
+                display:flex;
+
+                justify-content:center;
+
+                align-items:center;
+
+                box-sizing:border-box;
+
+                height:100%;
+
+                border:1px solid navy;
+
+            }
+
+            #dado {
+
+                display:grid;
+
+                width:30vw;
+
+                height:30vw;
+
+                border:5px solid red;
+
+                grid-template-columns:1fr 1fr 1fr;
+
+                grid-template-rows:1fr 1fr 1fr;
+
+            }
+
+            img {
+
+                width:100%;
+
+            }
+
+        </style>
+
+    </head>
+
+    <body>
+
+        <div id="externo">
+            
+
+            <div id="dado">
+    
+            </div>
+
+        </div>
+        <script>
+            const contenedor=document.getElementById("dado");
+            let imagenes=[];
+            let contador=0;
+            function oculta(i){
+                imagenes[i].style.visibility="hidden";
+                contador++;
+                if (contador>=9){
+                    contador=0;
+                    for (let a=0;a<9;a++){
+                        imagenes[a].style.visibility="visible";
+                    }
+                }
+            }
+            for (let i=0;i<9;i++){
+                imagenes[i]=document.createElement("img");
+                imagenes[i].src="/enunciados/circle.svg";
+                imagenes[i].onclick=()=>oculta(i);
+                contenedor.insertAdjacentElement("afterbegin",imagenes[i]);
+            }
+            
+        </script>
+    </body>
+   
+
+</html>

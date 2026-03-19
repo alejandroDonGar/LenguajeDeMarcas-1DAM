@@ -1,0 +1,83 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Dashboard</title>
+        <style>
+            .contenedor {
+                display:grid;
+                grid-template-columns:auto auto auto 15vw;
+                border:3px solid black;
+            }
+            .contenedor > div {
+                display:flex;
+                border:1px dashed black;
+                align-items:center;
+                justify-content:space-evenly;
+                padding:2em;
+            }
+            .contenedor > div:nth-of-type(3) {
+                background-color:lime;
+                grid-column-start:1;
+                grid-row-start:2;
+                grid-column-end:3;
+            }
+            .contenedor > div:nth-of-type(4) {
+                grid-column-start:3;
+                grid-row-start:2;
+                grid-column-end:5;
+            }
+            .contenedor > div:nth-of-type(6) {
+                background-color:lightyellow;
+                grid-column-start:2;
+                grid-row-start:3;
+                grid-column-end:4;
+            }
+            .contenedor > div:nth-of-type(8) {
+                grid-column-start:1;
+                grid-row-start:1;
+            }
+            .contenedor > div:nth-of-type(9) {
+                grid-column-start:4;
+                grid-row-start:1;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="contenedor">
+            <div>
+                <p>Párrafo1</p>
+            </div>
+            <div>
+                <a>Elemento a1</a>
+            </div>
+            <div>
+                <button>A</button>
+                <button>B</button>
+                <button>C</button>
+                <button>D</button>
+            </div>
+            <div>
+                <a>Elemento a2</a>
+                <a>Elemento a3</a>
+            </div>
+            <div>
+                <p>Párrafo 2</p>
+            </div>
+            <div>
+                <button>A</button>
+                <button>B</button>
+                <button>C</button>
+                <button>D</button>
+            </div>
+            <div>
+                <p>Párrafo 3</p>
+            </div>
+            <div>
+                <img src="http://lnd.angelmelchor.pro/tiny.jpg">
+            </div>
+            <div>
+                <img src="http://lnd.angelmelchor.pro/tiny.jpg">
+            </div>
+        </div>
+    </body>
+</html>

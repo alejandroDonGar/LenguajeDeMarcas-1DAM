@@ -1,0 +1,43 @@
+<html>
+    <head>
+        <title>12.12.25</title>
+        <meta charset="utf-8">
+        <style>
+            div {
+                display:grid;
+                justify-content:center;
+                border:2px solid black;
+                padding:2em;
+                margin:2em;
+            }
+            h3 {
+                display:flex;
+                jusitify-content:center;
+                font-size:2em;
+                border:2px solid black;
+                padding:2em;
+                margin:2em;
+            }
+            button {
+                font-size:2em;
+                font-weight:bold;
+                border:2px solid black;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="div">
+            <button onclick="random()">Numero Random</button>
+        </div>
+        <script>
+            let elemento = document.createElement("h3");
+            const contenedor = document.getElementById("div");
+            contenedor.insertAdjacentElement("beforeend", elemento);
+
+            function random() {
+                let mensaje = Math.ceil(Math.random()*100000);
+                elemento.innerText = mensaje;
+            }
+        </script>
+    </body>
+</html>

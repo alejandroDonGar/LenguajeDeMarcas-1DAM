@@ -1,0 +1,88 @@
+<html>
+    <head>
+        <title>18.12.2025</title>
+        <meta charset="utf-8">
+        <style>
+            body {
+                display:flex;
+                height:90vh;
+                flex-direction:column;
+                justify-content:center;
+                align-items:center;
+                
+            }
+            #contenedor {
+                display:grid;
+                border:5px solid black;
+                grid-template-columns:1fr 1fr 1fr;
+            }
+            #dos, #siete{
+                grid-column-start:3;
+            }
+            div {
+                margin:20px;
+            }
+            button {
+                padding:20px;
+                border:5px solid black;
+                color:black;
+                font-size:2em;
+                font-weight:bold;
+            }
+            img {
+                visibility:hidden;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="contenedor">
+            <img id="uno" src="http://lnd.angelmelchor.pro/circle.svg">
+            <img id="dos" src="http://lnd.angelmelchor.pro/circle.svg">
+            <img id="tres" src="http://lnd.angelmelchor.pro/circle.svg">
+            <img id="cuatro" src="http://lnd.angelmelchor.pro/circle.svg">
+            <img id="cinco" src="http://lnd.angelmelchor.pro/circle.svg">
+            <img id="seis" src="http://lnd.angelmelchor.pro/circle.svg">
+            <img id="siete" src="http://lnd.angelmelchor.pro/circle.svg">
+        </div>
+        <div>
+            <button onclick="boton()">Roll the Dice</button>
+        </div>
+        <script>
+
+            const puntos = document.getElementsByTagName("img");
+            const fondo = document.getElementById("contenedor");
+
+            const uno = ["hidden", "hidden", "hidden", "visible", "hidden", "hidden", "hidden"];
+            const dos = ["visible", "hidden", "hidden", "hidden", "hidden", "hidden", "visible"];
+            const tres = ["visible", "hidden", "hidden", "visible", "hidden", "hidden", "visible"];
+            const cuatro = ["visible", "visible", "hidden", "hidden", "hidden", "visible", "visible"];
+            const cinco = ["visible", "visible", "hidden", "visible", "hidden", "visible", "visible"];
+            const seis = ["visible", "visible", "visible", "hidden", "visible", "visible", "visible"];
+
+            const rojo = "red";
+            const naranja = "orange";
+            const amarillo = "yellow";
+            const lima = "lime";
+            const verde = "green";
+            const cyan = "cyan";
+            const azul = "blue";
+            const morado = "purple";
+            const magenta = "magenta";
+
+            const caraDelDado = [uno, dos, tres, cuatro, cinco, seis, siete]; 
+            const colorDelFondo = [rojo, naranja, amarillo, lima, verde, cyan, azul, morado, magenta];
+            
+
+            function boton() {
+
+                const numeroDelDado = Math.ceil(Math.random()*6);
+                const numeroDelColor = Math.ceil(Math.random()*9);
+
+                for (let i = 0; i < 7; i++) {
+                    fondo.style.backgroundColor = colorDelFondo[numeroDelColor - 1];
+                    puntos[i].style.visibility = caraDelDado[numeroDelDado - 1][i];
+                }
+            }
+        </script>
+    </body>
+</html>

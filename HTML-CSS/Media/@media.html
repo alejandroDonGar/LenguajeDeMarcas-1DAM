@@ -1,0 +1,31 @@
+<html>
+    <head>
+        <title>Responsivo</title>
+        <meta charset="utf-8">
+        <style>
+            div {
+                background-color:red;
+                height:50vh;
+                text-align:center;
+            }
+            div > p:first-of-type {
+                    color:white;
+                }
+            @media (max-width:600px), (orientation:landscape) {
+                div {
+                    background-color:green;
+                }
+                div > p:first-of-type {
+                    color:transparent;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <div>
+            <p>Párrafo 1</p>
+            <p>Párrafo 2</p>
+            <p>Párrafo 3</p>
+        </div>
+    </body>
+</html>
