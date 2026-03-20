@@ -1,0 +1,31 @@
+<html>
+	<head>
+		<title>Prueba de cuestionario</title>
+		<meta charset="utf-8">
+		<Style>
+			#contenedor{
+				background-color:white;
+				padding:1em;
+				border:1px solid black; 
+			}
+			.caja {
+				background-color:yellow;
+			}
+	</head>
+	<body>
+		<div id="conteneder">
+		<h2>Crear cuenta</h2>
+			<form action="http://lnd.angelmelchor.pro/test.php" method="post">
+			<h3 id="elUsuario"><b>Nombre</b></h3>
+			<input type="text" id="elUsuario" name=usuario>
+			<br>
+			<h3 id="elCorreo"><b>Correo</b></h3>
+			<input type="email" id="elCorreo" name=correo>
+			<br>
+			<h3 id="laPass"><b>Contraseña</b></h3>
+			<input type="password" id="laPass" name=contraseña>
+			<br><br>
+			<input class="caja" type="submit" value="Crear tu cuenta">
+		</div>
+	</body>
+</html>

@@ -1,0 +1,122 @@
+<html>
+    <head>
+        <title>18.12.2025</title>
+        <meta charset="utf-8">
+        <style>
+            body {
+                display:flex;
+                height:90vh;
+                flex-direction:column;
+                justify-content:center;
+                background-image:linear-gradient(to bottom, lightcyan, white);
+                align-items:center;
+                
+            }
+            #contenedor {
+                display:grid;
+                border:5px solid black;
+                background-image:linear-gradient(to bottom, white, lightcyan);
+                grid-template-columns:1fr 1fr 1fr;
+            }
+            #dos, #siete{
+                grid-column-start:3;
+            }
+            div {
+                margin:20px;
+            }
+            button {
+                padding:20px;
+                border:5px solid black;
+                background-image:linear-gradient(to bottom, lightcyan, white);
+                color:black;
+                font-size:2em;
+                font-weight:bold;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="contenedor">
+            <img id="uno" src="http://lnd.angelmelchor.pro/circle.svg">
+            <img id="dos" src="http://lnd.angelmelchor.pro/circle.svg">
+            <img id="tres" src="http://lnd.angelmelchor.pro/circle.svg">
+            <img id="cuatro" src="http://lnd.angelmelchor.pro/circle.svg">
+            <img id="cinco" src="http://lnd.angelmelchor.pro/circle.svg">
+            <img id="seis" src="http://lnd.angelmelchor.pro/circle.svg">
+            <img id="siete" src="http://lnd.angelmelchor.pro/circle.svg">
+        </div>
+        <div>
+            <button onclick="boton()">Roll the Dice</button>
+        </div>
+        <script>
+
+            let uno = document.getElementById("uno");
+            let dos = document.getElementById("dos");
+            let tres = document.getElementById("tres");
+            let cuatro = document.getElementById("cuatro");
+            let cinco = document.getElementById("cinco");
+            let seis = document.getElementById("seis");
+            let siete = document.getElementById("siete");
+
+            function boton() {
+                const numeroDelDado = Math.ceil(Math.random()*6);
+
+                switch (numeroDelDado) {
+                    case 1:
+                        uno.style.visibility="hidden";
+                        dos.style.visibility="hidden";
+                        tres.style.visibility="hidden";
+                        cuatro.style.visibility="visible";
+                        cinco.style.visibility="hidden";
+                        seis.style.visibility="hidden";
+                        siete.style.visibility="hidden";
+                        break;
+                    case 2:
+                        uno.style.visibility="hidden";
+                        dos.style.visibility="hidden";
+                        tres.style.visibility="visible";
+                        cuatro.style.visibility="hidden";
+                        cinco.style.visibility="visible";
+                        seis.style.visibility="hidden";
+                        siete.style.visibility="hidden";
+                        break;
+                    case 3:
+                        uno.style.visibility="hidden";
+                        dos.style.visibility="visible";
+                        tres.style.visibility="hidden";
+                        cuatro.style.visibility="hidden";
+                        cinco.style.visibility="hidden";
+                        seis.style.visibility="visible";
+                        siete.style.visibility="hidden";
+                        break;
+                    case 4:
+                        uno.style.visibility="visible";
+                        dos.style.visibility="visible";
+                        tres.style.visibility="hidden";
+                        cuatro.style.visibility="hidden";
+                        cinco.style.visibility="hidden";
+                        seis.style.visibility="visible";
+                        siete.style.visibility="visible";
+                        break;
+                    case 5:
+                        uno.style.visibility="visible";
+                        dos.style.visibility="visible";
+                        tres.style.visibility="hidden";
+                        cuatro.style.visibility="visible";
+                        cinco.style.visibility="hidden";
+                        seis.style.visibility="visible";
+                        siete.style.visibility="visible";
+                        break;
+                    case 6:
+                        uno.style.visibility="visible";
+                        dos.style.visibility="visible";
+                        tres.style.visibility="visible";
+                        cuatro.style.visibility="hidden";
+                        cinco.style.visibility="visible";
+                        seis.style.visibility="visible";
+                        siete.style.visibility="visible";
+                        break;
+                }
+            }
+        </script>
+    </body>
+</html>

@@ -1,0 +1,63 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Peluquería</title>
+        <style>
+            .divOG {
+                border:1px solid black;
+                padding:0.5em;
+            }
+            lable {
+                color:red;
+                font-weight:bold;
+            }
+        </style>
+    </head>
+    <body>
+        <div>
+            <h1>Córtate Un Poco</h1>
+            <h3>Reserva</h3>
+            <div class="divOG" display="inline-block">
+                <form action="http://10.104.99.36/enunciados/test.php" enctype="multipart/form-data">
+                <div style="padding-top:1em;padding-bottom:1em;">
+                    <lable for="elUsuario">Nombre</lable>
+                    <input type="text" id="elUsuario" placeholder="Introduce tu nombre" name="var1" required>
+                </div>
+                <div style="padding-top:1em;padding-bottom:1em;">
+                    <lable for="elCorreo">Correo</lable>
+                    <input type="email" id="elCorreo" placeholder="Introduce tu correo" name="var2" required>
+                </div>
+                <div style="padding-top:1em;padding-bottom:1em;">
+                    <lable for="laFecha">Fecha</lable>
+                    <input type="date" id="laFecha" name="var3">
+                </div>
+                <div style="padding-top:1em;padding-bottom:1em;">
+                    <a><b>Selecciona a tu peluquero/a:</b></a>
+                    <select>
+                        <option>Alejandro</option>
+                        <option>Silvia</option>
+                        <option>Elvira</option>
+                        <option>Juan</option>
+                    </select>
+                </div>
+                <br>
+                <a><b>Selecciona el turno:</b></a>
+                <select name="var4">
+                    <option>Mañana</option>
+                    <option>Tarde</option>
+                </select>
+                <br>
+                <br>
+                <input type="image" src="http://10.104.99.36/enunciados/tiny.jpg" name="var5">
+                </form>
+            </div>
+            <div>
+                <form action="http://10.104.99.36/enunciados/test.php" enctype="multipart/form-data">
+                <lable for="laImagen">Imagenes</lable>
+                <input type="foto" id="laImagen" name="var6">
+                <input type="submit" value="Enviar">
+                </form>
+            </div>
+        </div>
+    </body>
+</html>
