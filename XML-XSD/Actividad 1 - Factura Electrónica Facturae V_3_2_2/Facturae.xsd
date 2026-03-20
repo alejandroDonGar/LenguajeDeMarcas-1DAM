@@ -1,0 +1,363 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+    <!--? ELEMENTOS SIMPLES -->
+
+    <!--! TIPO INVOICES -->
+    <xsd:simpleType name="tipoIBAN">
+        <xsd:restriction base="xsd:string">
+            <xsd:pattern value="ES\d{2}\d{4}\d{4}\d{2}\d{10}"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <xsd:simpleType name="tipoLanguajeName">
+        <xsd:restriction base="xsd:string">
+            <xsd:pattern value="[a-z]{2}"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+    
+    <xsd:simpleType name="tipoIssueDate">
+        <xsd:restriction base="xsd:string">
+            <xsd:pattern value="\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01])"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <xsd:simpleType name="tipoInvoiceClass">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="OR"/>
+            <xsd:enumeration value="RE"/>
+            <xsd:enumeration value="OP"/>
+            <xsd:enumeration value="CO"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <xsd:simpleType name="tipoInvoiceDocumentType">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="FC"/>
+            <xsd:enumeration value="FA"/>
+            <xsd:enumeration value="AF"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+    <!--! TIPO INVOICES -->
+
+    <!--! TIPO PARTIES -->
+    <xsd:simpleType name="tipoCountryCode">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="ESP"/>
+            <xsd:enumeration value="FRA"/>
+            <xsd:enumeration value="PRT"/>
+            <xsd:enumeration value="DEU"/>
+            <xsd:enumeration value="ITA"/>
+            <!-- HAY MAS DE 100 PERO SOLO PONGO 5 DE EJEMPLO -->
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <xsd:simpleType name="tipoPostCode">
+        <xsd:restriction base="xsd:integer">
+            <xsd:pattern value="[0-5]{5}"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <xsd:simpleType name="tipoResidenceTypeCode">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="R"/>
+            <xsd:enumeration value="E"/>
+            <xsd:enumeration value="U"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <xsd:simpleType name="tipoPersonTypeCode">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="F"/>
+            <xsd:enumeration value="J"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+    <!--! TIPO PARTIES -->
+
+    <!--! TIPO FILE HEADER -->
+    <xsd:simpleType name="tipoInvoiceCurrencyCode">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="USD"/>
+            <xsd:enumeration value="EUR"/>
+            <xsd:enumeration value="MXN"/>
+            <xsd:enumeration value="GBP"/>
+            <xsd:enumeration value="JPY"/>
+            <!-- HAY MAS DE 100 PERO SOLO PONGO 5 DE EJEMPLO -->
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <xsd:simpleType name="tipoInvoiceCount">
+        <xsd:restriction base="xsd:integer">
+            <xsd:minInclusive value="0"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <xsd:simpleType name="tipoInvoiceIssuerType">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="EM"/>
+            <xsd:enumeration value="RE"/>
+            <xsd:enumeration value="TE"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <xsd:simpleType name="tipoSchemaVersion">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="3.2.2"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+    <!--! TIPO FILE HEADER -->
+
+    <!--? ELEMENTOS COMPLEJOS -->
+
+    <!--! TIPO INVOICES -->
+    <xsd:complexType name="tipoAccontToBeCredited">
+        <xsd:sequence>
+            <xsd:element name="IBAN" type="tipoIBAN"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="tipoInstallments">
+        <xsd:sequence>
+            <xsd:element name="InstallmentDueDate" type="tipoIssueDate"/>
+            <xsd:element name="InstallmentAmount" type="xsd:decimal"/>
+            <xsd:element name="PaymentMeans" type="xsd:integer"/>
+            <xsd:element name="AccontToBeCredited" type="tipoAccontToBeCredited"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="tipoPaymentDetails">
+        <xsd:sequence>
+            <xsd:element name="Installment" type="tipoInstallments"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="tipoTaxAmount2">
+        <xsd:sequence>
+            <xsd:element name="TotalAmount" type="xsd:decimal"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="tipoTaxableAmount">
+        <xsd:sequence>
+            <xsd:element name="TotalAmount" type="xsd:decimal"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="tipoTax2">
+        <xsd:sequence>
+            <xsd:element name="TaxTypeCode" type="xsd:integer"/>
+            <xsd:element name="TaxRate" type="xsd:integer"/>
+            <xsd:element name="TaxableAmount" type="tipoTaxableAmount"/>
+            <xsd:element name="TaxAmount" type="tipoTaxAmount2"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="tipoTaxesOutputs2">
+        <xsd:sequence>
+            <xsd:element name="Tax" type="tipoTax2"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="tipoInvoiceLine">
+        <xsd:sequence>
+            <xsd:element name="ItemDescription" type="xsd:string"/>
+            <xsd:element name="Quantity" type="xsd:integer"/>
+            <xsd:element name="UnitPriceWithoutTax" type="xsd:decimal"/>
+            <xsd:element name="TotalAmount" type="xsd:decimal"/>
+            <xsd:element name="GrossAmount" type="xsd:decimal"/>
+            <xsd:element name="TaxesOutputs" type="tipoTaxesOutputs2"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="tipoItems">
+        <xsd:sequence>
+            <xsd:element name="InvoiceLine" type="tipoInvoiceLine" maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="tipoInvoiceTotals">
+        <xsd:sequence>
+            <xsd:element name="TotalGrossAmount" type="xsd:integer"/>
+            <xsd:element name="TotalGrossAmountBeforeTaxes" type="xsd:integer"/>
+            <xsd:element name="TotalOutputs" type="xsd:integer"/>
+            <xsd:element name="TotalTaxesWithheld" type="xsd:integer"/>
+            <xsd:element name="InvoiceTotal" type="xsd:integer"/>
+            <xsd:element name="TotalOutstandingAmount" type="xsd:integer"/>
+            <xsd:element name="TotalExecutableAmount" type="xsd:integer"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="tipoTaxAmount">
+        <xsd:sequence>
+            <xsd:element name="TotalAmount" type="xsd:integer"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    
+    <xsd:complexType name="tipoTaxableBase">
+        <xsd:sequence>
+            <xsd:element name="TotalAmount" type="xsd:integer"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="tipoTax">
+        <xsd:sequence>
+            <xsd:element name="TaxTypeCode" type="xsd:integer"/>
+            <xsd:element name="TaxRate" type="xsd:integer"/>
+            <xsd:element name="TacableBase" type="tipoTaxableBase"/>
+            <xsd:element name="TaxAmount" type="tipoTaxAmount"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="tipoTaxesOutputs">
+        <xsd:sequence>
+            <xsd:element name="Tax" type="tipoTax"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="tipoInvoiceIssuerData">
+        <xsd:sequence>
+            <xsd:element name="IssueDate" type="tipoIssueDate"/>
+            <xsd:element name="InvoiceCurrencyCode" type="tipoInvoiceCurrencyCode"/>
+            <xsd:element name="TaxCurrencyCode" type="tipoInvoiceCurrencyCode"/>
+            <xsd:element name="LanguajeName" type="tipoLanguajeName"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="tipoInvoiceHeader">
+        <xsd:sequence>
+            <xsd:element name="InvoiceNumber" type="xsd:string"/>
+            <xsd:element name="InvoiceDocumentType" type="tipoInvoiceDocumentType"/>
+            <xsd:element name="InvoiceClass" type="tipoInvoiceClass"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="tipoInvoices">
+        <xsd:sequence>
+            <xsd:element name="InvoiceHeader" type="tipoInvoiceHeader"/>
+            <xsd:element name="InvoiceIssuerData" type="tipoInvoiceIssuerData"/>
+            <xsd:element name="TaxesOutputs" type="tipoTaxesOutputs"/>
+            <xsd:element name="InvoiceTotals" type="tipoInvoiceTotals"/>
+            <xsd:element name="Items" type="tipoItems"/>
+            <xsd:element name="PaymentDetails" type="tipoPaymentDetails"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <!--! TIPO INVOICES -->
+
+    <!--! TIPO PARTIES -->
+    <xsd:complexType name="tipoIndividual">
+        <xsd:sequence>
+            <xsd:element name="Name" type="xsd:string"/>
+            <xsd:element name="FirstSurname" type="xsd:string"/>
+            <xsd:element name="SecondSurname" type="xsd:string"/>
+            <xsd:element name="AddressInSpain" type="tipoAddressInSpain"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="tipoTaxIdentification">
+        <xsd:sequence>
+            <xsd:element name="PersonTypeCode" type="tipoPersonTypeCode"/>
+            <xsd:element name="ResidenceTypeCode" type="tipoResidenceTypeCode"/>
+            <xsd:element name="TaxIdentificationNumber" type="xsd:string"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="tipoBuyerParty">
+        <xsd:sequence>
+            <xsd:element name="TaxIdentification" type="tipoTaxIdentification"/>
+            <xsd:element name="Individual" type="tipoIndividual"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="tipoAddressInSpain">
+        <xsd:sequence>
+            <xsd:element name="Address" type="xsd:string"/>
+            <xsd:element name="PostCode" type="tipoPostCode"/>
+            <xsd:element name="Town" type="xsd:string"/>
+            <xsd:element name="Province" type="xsd:string"/>
+            <xsd:element name="CountryCode" type="tipoCountryCode"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="tipoLegalEntity">
+        <xsd:sequence>
+            <xsd:element name="CorporateName" type="xsd:string"/>
+            <xsd:element name="AddressInSpain" type="tipoAddressInSpain"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="tipoTaxIdenrification">
+        <xsd:sequence>
+            <xsd:element name="PersonTypeCode" type="tipoPersonTypeCode"/>
+            <xsd:element name="ResidenceTypeCode" type="tipoResidenceTypeCode"/>
+            <xsd:element name="TaxIdentificationNumber" type="xsd:string"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="tipoSellerParty">
+        <xsd:sequence>
+            <xsd:element name="TaxIdenrification" type="tipoTaxIdenrification"/>
+            <xsd:element name="LegalEntity" type="tipoLegalEntity"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="tipoParties">
+        <xsd:sequence>
+            <xsd:element name="SellerParty" type="tipoSellerParty"/>
+            <xsd:element name="BuyerParty" type="tipoBuyerParty"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <!--! TIPO PARTIES -->
+
+    <!--! TIPO FILE HEADER -->
+    <xsd:complexType name="tipoTotalInvoicesAmount">
+        <xsd:sequence>
+            <xsd:element name="TotalAmount" type="xsd:integer"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="tipoTotalOutsandingAmount">
+        <xsd:sequence>
+            <xsd:element name="TotalAmount" type="xsd:integer"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="tipoTotalExecutableAmount">
+        <xsd:sequence>
+            <xsd:element name="TotalAmount" type="xsd:integer"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="tipoBatch">
+        <xsd:sequence>
+            <xsd:element name="BatchIdentifier" type="xsd:string"/>
+            <xsd:element name="InvoiceCount" type="tipoInvoiceCount"/>
+            <xsd:element name="TotalInvoicesAmount" type="tipoTotalInvoicesAmount"/>
+            <xsd:element name="TotalOutsandingAmount" type="tipoTotalOutsandingAmount"/>
+            <xsd:element name="TotalExecutableAmount" type="tipoTotalExecutableAmount"/>
+            <xsd:element name="InvoiceCurrencyCode" type="tipoInvoiceCurrencyCode"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="tipoFileHeader">
+        <xsd:sequence>
+            <xsd:element name="SchemeVersion" type="tipoSchemaVersion"/>
+            <xsd:element name="Modalidad" type="xsd:string"/>
+            <xsd:element name="InvoiceIssuerType" type="tipoInvoiceIssuerType"/>
+            <xsd:element name="batch" type="tipoBatch"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <!--! TIPO FILE HEADER -->
+
+    <!--! TIPO ELEMENTO RAIZ -->
+    <xsd:complexType name="tipoFacturae">
+        <xsd:sequence>
+            <xsd:element name="FileHeader" type="tipoFileHeader"/>
+            <xsd:element name="Parties" type="tipoParties"/>
+            <xsd:element name="Invoices" type="tipoInvoices"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <!--! TIPO ELEMENTO RAIZ -->
+
+    <!--? ELEMENTO RAIZ -->
+
+    <xsd:element name="Facturae" type="tipoFacturae"/>
+</xsd:schema>
