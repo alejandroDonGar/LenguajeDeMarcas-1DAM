@@ -9,7 +9,7 @@
         </xsd:restriction>
     </xsd:simpleType>
 
-    <xsd:simpleType name="tipoLanguajeName">
+    <xsd:simpleType name="tipoLanguageName">
         <xsd:restriction base="xsd:string">
             <xsd:pattern value="[a-z]{2}"/>
         </xsd:restriction>
@@ -218,7 +218,7 @@
             <xsd:element name="IssueDate" type="tipoIssueDate"/>
             <xsd:element name="InvoiceCurrencyCode" type="tipoInvoiceCurrencyCode"/>
             <xsd:element name="TaxCurrencyCode" type="tipoInvoiceCurrencyCode"/>
-            <xsd:element name="LanguajeName" type="tipoLanguajeName"/>
+            <xsd:element name="LanguageName" type="tipoLanguageName"/>
         </xsd:sequence>
     </xsd:complexType>
 
