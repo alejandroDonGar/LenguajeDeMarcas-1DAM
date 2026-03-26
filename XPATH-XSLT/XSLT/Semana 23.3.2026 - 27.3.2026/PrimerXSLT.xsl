@@ -20,6 +20,7 @@
                     }
                     th {
                         padding:5px;
+                        border:1px solid navy;
                         color:navy;
                         background-color:white;
                     }
@@ -34,17 +35,23 @@
             <body>
                 <table>
                     <tr>
-                        <th style="border:1px solid navy;">Título</th>
-                        <th style="border:1px solid navy;">Precio</th>
-                        <th style="border:1px solid navy;">Categoria</th>
+                        <th>Título</th>
+                        <th>Precio</th>
+                        <th>Categoria</th>
                     </tr>
                     <xsl:for-each select="//libro">
+                        <xsl:sort select="precio" data-type="number"/> 
                         <tr>
                             <td><xsl:value-of select="./titulo"/></td>
                             <td><xsl:value-of select="./precio"/></td>
-                            <td><xsl:value-of select="./@categoria"/></td>
+                            <xsl:if test="./@categoria='tecnico'">
+                                <td style="color:darkgreen;background-color:lime;font-weight:bold;"><xsl:value-of select="./@categoria"/></td>
+                            </xsl:if>
+                            <xsl:if test="./@categoria='novela'">
+                                <td style="color:blue;background-color:cyan;font-weight:bold;"><xsl:value-of select="./@categoria"/></td>
+                            </xsl:if>
                         </tr>
-                    </xsl:for-each>  
+                    </xsl:for-each> 
                 </table>
             </body>
         </html>
