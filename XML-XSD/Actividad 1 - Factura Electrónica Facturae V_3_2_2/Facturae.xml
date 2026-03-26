@@ -148,7 +148,7 @@
                 </TaxesOutputs>
             </InvoiceLine>
         </Items>
-        <PaymentDetails>
+        <PaymentDetails> 
             <Installments>
                 <InstallmentsDueDate>2026-04-20</InstallmentsDueDate>
                 <InstallmentsAmount>23251.97</InstallmentsAmount>
